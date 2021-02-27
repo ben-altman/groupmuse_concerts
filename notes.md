@@ -5,5 +5,8 @@
   user can search by instrument/ensemble
   events are displayed for user
   user selects and event and sees details about it
-  
+
 2. classes
+  scraper - gets data about upcoming concerts
+  concert - knows about concerts, stores all concerts
+  cli - interact with user
