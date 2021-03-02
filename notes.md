@@ -10,3 +10,12 @@
   scraper - gets data about upcoming concerts
   concert - knows about concerts, stores all concerts
   cli - interact with user
+
+CLI
+-welcome user
+-choose by type, instrumentation
+-if type, list and describe: live concert, premiere, planetary music
+  -choose by number, display concerts, choose by number and display details
+-if instrumentation - enter instrument and same
+-if none, say so and ask for another search
+-if exit, vale and end program
