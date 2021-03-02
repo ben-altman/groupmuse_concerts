@@ -1,5 +1,6 @@
 require_relative "./groupmuse_concerts/version"
 require_relative "./groupmuse_concerts/cli"
+require_relative "./groupmuse_concerts/concert"
 
 require 'pry'
 

@@ -1,3 +1,5 @@
+# cli controller
+
 class GroupmuseConcerts::CLI
 
   def call
