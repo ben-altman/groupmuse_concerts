@@ -7,10 +7,16 @@ class GroupmuseConcerts::Concert
     @name = name
     @instrumentation = instrumentation
     @day_time = day_time
-    @composers = []
+    @composers = composers
     @type = type
     @url = "https://www.groupmuse.com/" + url
+    @@all << self
   end
+
+  # def initialize(student_hash)
+  #     student_hash.each {|key, value| self.send(("#{key}="), value)}
+  #     @@all << self
+  #   end
 
   def self.all
     @@all

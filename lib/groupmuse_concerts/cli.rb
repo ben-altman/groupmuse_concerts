@@ -4,6 +4,7 @@ class GroupmuseConcerts::CLI
 
   def call
 binding.pry
+
     puts "Let's find a concert to stream!"
     input = nil
     scrape_concerts
@@ -17,13 +18,14 @@ binding.pry
   end
 
   def scrape_concerts
-    GroupmuseConcerts::Scraper.new
+    a = GroupmuseConcerts::Scraper.new
 
   end
 
   def print_all_concerts
     GroupmuseConcerts::Concert.all.each_with_index(1) do |c|
       puts "#{index}. #{c.name}"
+    end
   end
 
   def print_concert(concert)
