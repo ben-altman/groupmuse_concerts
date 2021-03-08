@@ -21,6 +21,23 @@ binding.pry
 
   end
 
+  def print_all_concerts
+    GroupmuseConcerts::Concert.all.each_with_index(1) do |c|
+      puts "#{index}. #{c.name}"
+  end
+
+  def print_concert(concert)
+    puts ""
+    puts "#{concert.name}"
+    puts ""
+    puts "#{concert.intro_quote}"
+    puts "Date and time:      #{concert.day_time}"
+    puts "Instrumentation:    #{concert.ensemble}"
+    puts "Composers:          #{concert.composers}"
+    puts "Type:               #{concert.type}"
+    puts "URL:                #{concert.url}"
+  end
+
   def goodbye
     puts "Enjoy your concert and thank you for supporting artists!"
   end
