@@ -5,7 +5,7 @@ class GroupmuseConcerts::CLI
   def call
     puts "Let's find a concert to stream!"
     get_concerts
-
+    print_all_concerts
     # while input != "exit"
       # get concerts
       # ask for search choice
@@ -22,7 +22,7 @@ class GroupmuseConcerts::CLI
   end
 
   def print_all_concerts
-    GroupmuseConcerts::Concert.all.each_with_index(1) do |c|
+    GroupmuseConcerts::Concert.all.each.with_index(1) do |c, index|
       puts "#{index}. #{c.name}"
     end
   end
@@ -42,5 +42,4 @@ class GroupmuseConcerts::CLI
   def goodbye
     puts "Enjoy your concert and thank you for supporting artists!"
   end
-
 end
