@@ -3,11 +3,9 @@
 class GroupmuseConcerts::CLI
 
   def call
-binding.pry
-
     puts "Let's find a concert to stream!"
-    input = nil
-    scrape_concerts
+    get_concerts
+
     # while input != "exit"
       # get concerts
       # ask for search choice
@@ -17,9 +15,10 @@ binding.pry
     # goodbye
   end
 
-  def scrape_concerts
+  def get_concerts
     a = GroupmuseConcerts::Scraper.new
-
+#binding.pry
+    a.scrape_concerts
   end
 
   def print_all_concerts

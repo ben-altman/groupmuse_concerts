@@ -3,7 +3,7 @@ class GroupmuseConcerts::Concert
 
   @@all = []
 
-  def initialize
+  def initialize(name, day_time, composers, instrumentation, url, type)
     @name = name
     @instrumentation = instrumentation
     @day_time = day_time
