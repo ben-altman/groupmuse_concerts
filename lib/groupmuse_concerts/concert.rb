@@ -9,7 +9,7 @@ class GroupmuseConcerts::Concert
     @day_time = day_time
     @composers = composers
     @type = type
-    @url = "https://www.groupmuse.com/" + url
+    @url = "https://www.groupmuse.com" + url
     @@all << self
   end
 
