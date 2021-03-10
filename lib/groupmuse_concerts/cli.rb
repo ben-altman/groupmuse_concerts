@@ -4,11 +4,13 @@ class GroupmuseConcerts::CLI
 
   def call
     puts "Stuck at home, missing music? Let's find a concert to stream!"
-    find_concert
+    menu
   end
 
-  def find_concert
+  def menu
     get_concerts
+
+    input = nil
 
     puts ""
     puts "Enter 1 to search for a composer"
@@ -19,32 +21,40 @@ class GroupmuseConcerts::CLI
     input = gets.strip
 
     case input
-    when input == 1
+    when "1"
       search_composer
-    when input == 2
+    when "2"
       search_instrument
-    when input == 3
+    when "3"
       print_all_concerts
-    when input == "exit"
+      select_from_all
+      puts "Search for another concert? Type Y or N"
+      input = gets.strip.downcase
+      if input == "y"
+        menu
+      else
+        goodbye
+    when "exit"
       goodbye
     else
       puts "I do not understand your choice. Type exit or try again."
     end
-
-    # puts "pick a show!"
-    # input = gets.strip
-    # concert = GroupmuseConcerts::Concert.all[input.to_i-1]
-    #
-    # print_concert(concert)
-
   end
-  # while input != "exit"
-    # get concerts
-    # ask for search choice
-    # display options
-    # choose and diplay choice
-  # end
-  # goodbye
+
+  def get_concerts
+    a = GroupmuseConcerts::Scraper.new
+    a.scrape_concerts
+  end
+
+  def select_from_all
+    puts "Choose a concert to see details or type 'exit'!"
+    input = gets.strip
+    if input != "exit"
+      concert = GroupmuseConcerts::Concert.all[input.to_i-1]
+      print_concert(concert)
+    else
+      goodbye
+  end
 
   def search_composer
 
@@ -52,11 +62,6 @@ class GroupmuseConcerts::CLI
 
   def search_instrument
 
-  end
-
-  def get_concerts
-    a = GroupmuseConcerts::Scraper.new
-    a.scrape_concerts
   end
 
   def print_all_concerts
@@ -80,5 +85,5 @@ class GroupmuseConcerts::CLI
   def goodbye
     puts "Enjoy your concert and thank you for supporting artists!"
   end
-  
+
 end
