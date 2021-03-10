@@ -1,14 +1,13 @@
 class GroupmuseConcerts::Concert
-  attr_accessor :name, :instrumentation, :day_time, :composers, :type, :url
+  attr_accessor :name, :instruments, :day_time, :composers, :url
 
   @@all = []
 
-  def initialize(name, day_time, composers, instrumentation, url, type)
+  def initialize(name, day_time, composers, instruments, url)
     @name = name
-    @instrumentation = instrumentation
+    @instruments = instruments
     @day_time = day_time
     @composers = composers
-    @type = type
     @url = "https://www.groupmuse.com" + url
     @@all << self
   end

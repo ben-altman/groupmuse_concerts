@@ -6,6 +6,12 @@ class GroupmuseConcerts::CLI
     puts "Let's find a concert to stream!"
     get_concerts
     print_all_concerts
+    puts "pick a show!"
+    input = gets.strip
+    concert = GroupmuseConcerts::Concert.all[input.to_i-1]
+
+    print_concert(concert)
+
     # while input != "exit"
       # get concerts
       # ask for search choice
@@ -31,12 +37,12 @@ class GroupmuseConcerts::CLI
     puts ""
     puts "#{concert.name}"
     puts ""
-    puts "#{concert.intro_quote}"
     puts "Date and time:      #{concert.day_time}"
-    puts "Instrumentation:    #{concert.ensemble}"
+    puts "Instruments:        #{concert.instruments}"
     puts "Composers:          #{concert.composers}"
-    puts "Type:               #{concert.type}"
     puts "URL:                #{concert.url}"
+    puts ""
+    puts "----------------------"
   end
 
   def goodbye
