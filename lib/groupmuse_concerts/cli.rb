@@ -4,12 +4,11 @@ class GroupmuseConcerts::CLI
 
   def call
     puts "Stuck at home, missing music? Let's find a concert to stream!"
+    get_concerts
     menu
   end
 
   def menu
-    get_concerts
-
     input = nil
 
     puts ""
@@ -63,6 +62,7 @@ class GroupmuseConcerts::CLI
     subset = GroupmuseConcerts::Concert.all.select do |c|
       c.composers != nil && (c.composers.downcase.include? input)
     end
+
     if subset[0] != nil
         print_subset(subset)
         select_from_subset(subset)
@@ -95,6 +95,7 @@ class GroupmuseConcerts::CLI
   end
 
   def select_from_subset(subset)
+    puts ""
     puts "Choose a concert to see details or type 'exit'!"
     input = gets.strip
     if input != "exit"
