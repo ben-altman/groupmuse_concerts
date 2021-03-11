@@ -22,6 +22,7 @@ class GroupmuseConcerts::CLI
 
     case input
     when "1"
+      puts "Enter the last name of your favorite composer:"
       search_composer
     when "2"
       search_instrument
@@ -30,10 +31,7 @@ class GroupmuseConcerts::CLI
       select_from_all
       puts "Search for another concert? Type Y or N"
       input = gets.strip.downcase
-      if input == "y"
-        menu
-      else
-        goodbye
+      input == "y" ? menu : goodbye
     when "exit"
       goodbye
     else
@@ -54,14 +52,35 @@ class GroupmuseConcerts::CLI
       print_concert(concert)
     else
       goodbye
+    end
   end
 
   def search_composer
-
+    input = gets.strip
+    subset = GroupmuseConcerts::Concert.all.select do |c|
+#  binding.pry
+      c.composers != nil && (c.composers.include? input)
+    end
+    if subset[0] != nil
+        print_subset(subset)
+    else
+      puts "It looks like no concerts feature #{input}. Try again?"
+      menu
+    end
   end
 
   def search_instrument
 
+  end
+
+  def print_subset(subset)
+    subset.each.with_index(1) do |c, index|
+      puts "#{index}. #{c.name}"
+    end
+  end
+
+  def select_from_subset
+    
   end
 
   def print_all_concerts
