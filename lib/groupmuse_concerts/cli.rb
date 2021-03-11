@@ -22,20 +22,23 @@ class GroupmuseConcerts::CLI
 
     case input
     when "1"
+      puts ""
       puts "Enter the last name of your favorite composer:"
       search_composer
     when "2"
+      puts ""
+      puts "What instrument or ensemble would you like to hear?"
       search_instrument
     when "3"
       print_all_concerts
       select_from_all
-      puts "Search for another concert? Type Y or N"
-      input = gets.strip.downcase
-      input == "y" ? menu : goodbye
+      again?
     when "exit"
       goodbye
     else
+      puts ""
       puts "I do not understand your choice. Type exit or try again."
+      menu
     end
   end
 
@@ -56,21 +59,33 @@ class GroupmuseConcerts::CLI
   end
 
   def search_composer
-    input = gets.strip
+    input = gets.strip.downcase
     subset = GroupmuseConcerts::Concert.all.select do |c|
-#  binding.pry
-      c.composers != nil && (c.composers.include? input)
+      c.composers != nil && (c.composers.downcase.include? input)
     end
     if subset[0] != nil
         print_subset(subset)
+        select_from_subset(subset)
     else
+      puts ""
       puts "It looks like no concerts feature #{input}. Try again?"
       menu
     end
   end
 
   def search_instrument
-
+    input = gets.strip.downcase
+    subset = GroupmuseConcerts::Concert.all.select do |c|
+      c.instruments != nil && (c.instruments.downcase.include? input)
+    end
+    if subset[0] != nil
+        print_subset(subset)
+        select_from_subset(subset)
+    else
+      puts ""
+      puts "It looks like no concerts feature #{input}. Try again?"
+      menu
+    end
   end
 
   def print_subset(subset)
@@ -79,8 +94,16 @@ class GroupmuseConcerts::CLI
     end
   end
 
-  def select_from_subset
-    
+  def select_from_subset(subset)
+    puts "Choose a concert to see details or type 'exit'!"
+    input = gets.strip
+    if input != "exit"
+      concert = subset[input.to_i-1]
+      print_concert(concert)
+      again?
+    else
+      goodbye
+    end
   end
 
   def print_all_concerts
@@ -101,8 +124,17 @@ class GroupmuseConcerts::CLI
     puts "__________________________________________________________"
   end
 
+  def again?
+    puts ""
+    puts "Search for another concert? Type Y or N"
+    input = gets.strip.downcase
+    input == "y" ? menu : goodbye
+  end
+
   def goodbye
+    puts ""
     puts "Enjoy your concert and thank you for supporting artists!"
+    puts "________________________________________________________"
   end
 
 end
