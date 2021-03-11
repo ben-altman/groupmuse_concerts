@@ -1,6 +1,6 @@
 # GroupmuseConcerts
 
-This Ruby Gem allows the user to view upcoming concerts to stream via Groupmuse, and to filter by composer and instrumentation.
+This Ruby Gem allows the user to view upcoming concerts to stream via Groupmuse, and to filter by composer and instrumentation. 
 
 ## Installation
 
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+
 
 ## Development
 
