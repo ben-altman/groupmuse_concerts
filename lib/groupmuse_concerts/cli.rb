@@ -68,7 +68,7 @@ class GroupmuseConcerts::CLI
         select_from_subset(subset)
     else
       puts ""
-      puts "It looks like no concerts feature #{input}. Try again?"
+      puts "It looks like no concerts feature #{input.capitalize}. Try again?"
       menu
     end
   end
