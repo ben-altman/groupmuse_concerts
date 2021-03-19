@@ -21,3 +21,5 @@ class GroupmuseConcerts::Concert
   end
 end
 
+# notes for later
+
