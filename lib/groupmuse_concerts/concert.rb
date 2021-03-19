@@ -20,6 +20,3 @@ class GroupmuseConcerts::Concert
     @@all << self
   end
 end
-
-# notes for later
-
