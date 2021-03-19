@@ -16,6 +16,7 @@ class GroupmuseConcerts::CLI
     puts "Enter 2 to search for an instrument or ensemble"
     puts "Enter 3 to see a list of all the concerts"
     puts "Type 'exit' if you are finished"
+    puts ""
 
     input = gets.strip
 
@@ -128,6 +129,7 @@ class GroupmuseConcerts::CLI
   def again?
     puts ""
     puts "Search for another concert? Type Y or N"
+    puts ""
     input = gets.strip.downcase
     input == "y" ? menu : goodbye
   end
