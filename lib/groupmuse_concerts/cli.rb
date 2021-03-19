@@ -98,6 +98,7 @@ class GroupmuseConcerts::CLI
   def select_from_subset(subset)
     puts ""
     puts "Choose a concert to see details or type 'exit'!"
+    puts ""
     input = gets.strip
     if input != "exit"
       concert = subset[input.to_i-1]
