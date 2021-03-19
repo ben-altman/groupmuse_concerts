@@ -110,6 +110,8 @@ class GroupmuseConcerts::CLI
   end
 
   def print_all_concerts
+    # objects.sort_by(&:attribute)
+
     GroupmuseConcerts::Concert.all.each.with_index(1) do |c, index|
       puts "#{index}. #{c.name}"
     end

@@ -9,10 +9,15 @@ class GroupmuseConcerts::Concert
     @day_time = day_time
     @composers = composers
     @url = "https://www.groupmuse.com" + url
-    @@all << self
+    self.save
   end
 
   def self.all
     @@all
   end
+
+  def save
+    @@all << self
+  end
 end
+
